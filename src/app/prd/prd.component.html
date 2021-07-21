@@ -1,0 +1,49 @@
+<div class="container">
+    <form (ngSubmit)="add()" [formGroup]="formData" >
+        <div class="form-group">
+          <label>Mã sản phẩm</label>
+          <input [(ngModel)]="Prodct.id" type="text" class="form-control" placeholder="Mã sản phẩm"  formControlName="id" id="id">
+        </div>
+        <div class="form-group">
+          <label>Tên sản phẩm</label>
+          <input [(ngModel)]="Prodct.name"  type="text" class="form-control" placeholder="Tên sản phẩm"  formControlName="name" id="name">
+        </div>
+        <div class="form-group">
+            <label >Giá</label>
+            <input [(ngModel)]="Prodct.gia" name="gia"  type="text" class="form-control" placeholder="Giá"  formControlName="gia" id="gia">
+        </div>
+        <button type="submit"  class="btn btn-primary">Submit</button>
+    </form>
+</div><br>
+<div class="container">
+    <div class="input-group">
+        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" name="name" (ngModelChange)="Search()"
+          aria-describedby="search-addon" />
+        <button type="button" class="btn btn-outline-primary">search</button>
+      </div>
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Mã sản phẩm</th>
+            <th scope="col">Tên sản phẩm</th>
+            <th scope="col">Giá</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let listProduct of list; let i=index">
+            <td>{{listProduct.id}}</td>
+            <td>{{listProduct.name}}</td>
+            <td>{{listProduct.gia}}</td>
+            <td>
+                <!-- Bây giờ thằng cha app.component nó đang chứa cả thằng list đến thằng form đúng không ? -->
+                <!-- Thì khi ông click thằng edit, nó phải gửi id sang cho thằng cha, rồi thằng cha truyền lại id đấy vào thằng form -->
+                <button class="btn btn-sm btn-warning" style="margin-left: 20px;" (click)="edit(i)">Sửa</button>
+                <button class="btn btn-sm btn-danger" style="margin-left: 20px;" (click)="removeItem(i)">Xóa</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+
+  
