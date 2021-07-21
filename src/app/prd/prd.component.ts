@@ -31,6 +31,8 @@ export class PrdComponent implements OnInit {
   removeItem(id: number) {
     this.list.splice(id, 1)
   }
+test(){
+}
   add(){
     this.list.push(this.formData.value)
   }
